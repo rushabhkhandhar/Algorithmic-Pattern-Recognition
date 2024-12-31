@@ -11,8 +11,8 @@ import os
 from typing import Dict, List, Optional
 from dataclasses import dataclass
 
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
