@@ -3,7 +3,21 @@ name: Market Scanner
 on:
   schedule:
     # Run every 5 minutes during market hours (IST: 9:15 AM - 3:30 PM)
-    - cron: '*/5 3:45-10:00 * * 1-5'
+       # Pre-market preparation
+    - cron: '*/5 3 * * 1-5'  # 8:30-9:00 IST
+    
+    # Market open critical period (frequent checks)
+    - cron: '*/5 4 * * 1-5'  # 9:30-10:00 IST (Every 2 minutes at market open)
+    - cron: '*/5 5 * * 1-5'  # 10:30-11:00 IST
+    
+    # Regular trading hours (every 3 minutes)
+    - cron: '*/5 6 * * 1-5'  # 11:30-12:00 IST
+    - cron: '*/5 7 * * 1-5'  # 12:30-13:00 IST
+    - cron: '*/5 8 * * 1-5'  # 13:30-14:00 IST
+    
+    # Market closing period (frequent checks)
+    - cron: '*/5 9 * * 1-5'  # 14:30-15:00 IST
+    - cron: '*/5 10 * * 1-5' # 15:30-16:00 IST
   workflow_dispatch:  # Manual trigger
 
 jobs:
